@@ -1,0 +1,35 @@
+# Development Mode OTP Codes
+# When you sign up, the OTP will be logged here automatically
+
+[2026-04-13T13:11:42.060376] krishpatelcs2005@gmail.com: 336498
+[2026-04-13T13:17:24.216544] patel.krishyt2005@gmail.com: 631261
+[2026-04-13T13:22:50.630334] krishkpatelsal2005@gmail.com: 543132
+[2026-04-14T04:16:44.688777] krishkpatelsal2005@gmail.com: 263085
+[2026-04-14T04:38:31.983340] krishpatelcs2005@gmail.com: 680769
+[2026-04-14T04:38:40.833500] krishpatelcs2005@gmail.com: 689344
+[2026-04-14T04:38:43.868075] krishpatelcs2005@gmail.com: 236984
+[2026-04-14T04:42:37.015196] krishpatelcs2005@gmail.com: 929574
+[2026-04-14T04:46:49.103778] krishpatelcs2005@gmail.com: 201985
+[2026-04-14T04:46:50.261361] krishpatelcs2005@gmail.com: 561399
+[2026-04-14T04:46:50.513239] krishpatelcs2005@gmail.com: 673666
+[2026-04-14T04:48:43.968641] krishpatelcs2005@gmail.com: 334208
+[2026-04-14T04:48:53.203573] krishpatelcs2005@gmail.com: 006101
+[2026-04-14T04:48:54.073299] krishpatelcs2005@gmail.com: 727176
+[2026-04-14T04:48:54.413173] krishpatelcs2005@gmail.com: 982967
+[2026-04-14T04:53:39.636737] krishpatelcs2005@gmail.com: 917114
+[2026-04-14T04:53:42.043566] krishpatelcs2005@gmail.com: 646811
+[2026-04-14T04:53:43.628618] krishpatelcs2005@gmail.com: 410820
+[2026-04-14T04:53:44.007661] krishpatelcs2005@gmail.com: 254649
+[2026-04-14T04:54:04.998505] krishpatelcs2005@gmail.com: 637028
+[2026-04-14T04:54:06.469744] krishpatelcs2005@gmail.com: 210662
+[2026-04-14T04:54:06.786352] krishpatelcs2005@gmail.com: 156347
+[2026-04-14T05:06:21.072873] krishpatelcs2005@gmail.com: 094855
+[2026-04-14T05:06:38.937070] krishpatelcs2005@gmail.com: 061983
+[2026-04-14T05:08:23.448161] krishpatelcs2005@gmail.com: 816504
+[2026-04-14T05:09:13.543081] krishpatelcs2005@gmail.com: 404996
+[2026-04-14T05:13:54.731625] krishpatelcs2005@gmail.com: 129960
+[2026-04-14T05:17:47.452759] krishpatelcs2005@gmail.com: 855689
+[2026-04-14T05:21:53.326644] krishpatelcs2005@gmail.com: 803539
+[2026-04-14T05:52:25.112117] krishpatelcs2005@gmail.com: 312713
+[2026-04-14T06:03:58.468760] krishkpatelsal2005@gmail.com: 064457
+[2026-04-14T06:04:35.404582] krishkpatelsal2005@gmail.com: 671586

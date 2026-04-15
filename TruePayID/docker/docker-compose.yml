@@ -1,0 +1,72 @@
+# docker/docker-compose.yml
+# Full TruePayID stack: MySQL + Backend + Frontend
+# Run: docker-compose up --build
+
+version: "3.9"
+
+services:
+  # ── MySQL Database ─────────────────────────────────────────────────────────
+  db:
+    image: mysql:8.0
+    container_name: truepayid-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-truepayid_root}
+      MYSQL_DATABASE:      ${DB_NAME:-truepayid}
+      MYSQL_USER:          ${DB_USER:-truepayid}
+      MYSQL_PASSWORD:      ${DB_PASSWORD:-truepayid_root}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD:-truepayid_root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── FastAPI Backend ────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: truepayid-backend
+    restart: unless-stopped
+    environment:
+      DB_HOST:      db
+      DB_PORT:      3306
+      DB_NAME:      ${DB_NAME:-truepayid}
+      DB_USER:      ${DB_USER:-truepayid}
+      DB_PASSWORD:  ${DB_PASSWORD:-truepayid_root}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-CHANGE_ME_IN_PRODUCTION}
+      SMTP_HOST:    ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT:    ${SMTP_PORT:-587}
+      SMTP_USER:    ${SMTP_USER:-no-reply@truepayid.in}
+      SMTP_PASSWORD:${SMTP_PASSWORD:-}
+      DEBUG:        ${DEBUG:-false}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ai_models:/app/app/ai_engine   # persist trained model between restarts
+
+  # ── React Frontend ─────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: truepayid-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://backend:8000/api/v1
+
+volumes:
+  db_data:
+  ai_models:
