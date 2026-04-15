@@ -31,7 +31,10 @@ async def lifespan(app: FastAPI):
     so it trains/loads on first import.
     """
     logger.info("Starting TruePayID backend...")
-    await create_tables()
+    try:
+        await create_tables()
+    except Exception as e:
+        logger.error("Database connection failed:", exc_info=True)
 
     # Import fraud scorer here to trigger training on startup
     from app.ai_engine.fraud_scorer import fraud_scorer  # noqa: F401
