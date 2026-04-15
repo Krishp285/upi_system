@@ -5,7 +5,7 @@
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 from typing import Optional
-
+import os
 
 class Settings(BaseSettings):
     # ── Application ───────────────────────────────────────────
@@ -23,10 +23,16 @@ class Settings(BaseSettings):
 
     @property
     def DATABASE_URL(self) -> str:
+        # 1. If DATABASE_URL is provided (Render / cloud), use it
+        db_url = os.getenv("DATABASE_URL")
+        if db_url:
+            return db_url
+
+        # 2. Otherwise fallback to local MySQL
         return (
             f"mysql+aiomysql://{self.DB_USER}:{self.DB_PASSWORD}"
             f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
-        )
+    )
 
     # ── JWT ───────────────────────────────────────────────────
     JWT_SECRET_KEY: str = "CHANGE_ME_IN_PRODUCTION_USE_STRONG_RANDOM_KEY"
