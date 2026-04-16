@@ -75,7 +75,11 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5174",
         "http://127.0.0.1:5175",
         "http://127.0.0.1:5176",
-    ]
+        
+    "http://localhost:5173",
+    "https://upi-system.onrender.com"
+]
+    
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
