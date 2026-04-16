@@ -15,12 +15,14 @@ from app.config import get_settings
 from app.database.connection import create_tables
 from app.routers import auth, transactions, dashboard, fraud, admin
 
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
 )
 logger = logging.getLogger(__name__)
 settings = get_settings()
+
 
 
 @asynccontextmanager
@@ -52,7 +54,9 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
-
+@app.get("/")
+def home():
+    return {"message": "TruePayID Backend Running 🚀"}
 # ── CORS ──────────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
